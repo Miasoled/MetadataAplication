@@ -1,15 +1,27 @@
 package org.example.actividad_torres.Config;
 
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
+import org.springframework.validation.annotation.Validated;
 
 @Component
 @ConfigurationProperties(prefix = "app.info")
+@Validated
 public class AppInfoProperties {
 
+    @NotBlank
     private String name;
+
+    @NotBlank
     private String version;
+
+    @NotBlank
     private String environment;
+
+    @Valid
     private Developer developer = new Developer();
 
     public String getName() {
@@ -46,7 +58,11 @@ public class AppInfoProperties {
 
     public static class Developer {
 
+        @NotBlank
         private String name;
+
+        @NotBlank
+        @Email
         private String email;
 
         public String getName() {

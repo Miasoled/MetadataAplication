@@ -7,6 +7,4 @@ public record InfoResponse(
         String developerName,
         String developerEmail
 ) {
-    
-
 }
